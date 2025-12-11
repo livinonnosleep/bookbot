@@ -13,9 +13,22 @@ def char_count(text):
             chars[lowered] = 1
     return chars
 
-def sort_on(dictionary):
-    return dictionary[0]
 
-def sort_count(char):
-    char.sort(reverse=True, key=sort_on)
-    print (char)
+def enrich_chars(list):
+    enrich_dic = []
+    for i in list:
+        item = {"char": (i),"num": list[i]}
+        enrich_dic.append(item)
+    return enrich_dic
+
+def sort_on(dictionary):
+    return dictionary["num"]
+
+def sort_count(new_char):
+    new_char.sort(reverse=True, key=sort_on)
+    for i in new_char:
+        ch = i["char"]
+        count = i["num"]
+        if not ch.isalpha():
+            continue
+        print (f"{ch}: {count}")
