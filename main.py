@@ -10,8 +10,16 @@ from stats import sort_count
 
 from stats import enrich_chars
 
+
 def main():
-    book_path = ("books/frankenstein.txt")
+    import sys
+    if len(sys.argv) != 2:
+        print ("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        book_path = sys.argv[1]
+
+    #book_path = ("books/frankenstein.txt")
     text = get_book_text(book_path)
     count = count_words(text)
     chars = char_count(text)
@@ -26,5 +34,6 @@ def main():
     chars_org = sort_count(chars_enrich)
     print ("============= END ===============")
     #print (order_value)
+    #print(sys.argv)
 
 main()
